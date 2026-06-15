@@ -359,8 +359,9 @@ jobs:
           az account set --subscription "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
           
           # Upload team configurations and index sample data in one step
-          # Automatically select "6" (All use cases) for non-interactive deployment
-          echo "6" | bash infra/scripts/selecting_team_config_and_data.sh
+          # Automatically select "7" (All use cases) for non-interactive deployment
+          # Note: option 6 is invalid; valid choices are 1-5 or 7/all
+          printf 'y\n7\n' | bash infra/scripts/selecting_team_config_and_data.sh
 
       - name: Generate Deployment Summary
         if: always()
